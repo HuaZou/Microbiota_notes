@@ -2,7 +2,24 @@
 
 Put daily work records on microbiota into this repository 
 
-[[_TOC_]]
+
+- [Notes for microbiota research](#notes-for-microbiota-research)
+  - [Review](#review)
+  - [Method](#method)
+  - [Research article](#research-article)
+    - [Longitudinal study](#longitudinal-study)
+    - [NAFLD: non-alcoholic fatty liver disease](#nafld-non-alcoholic-fatty-liver-disease)
+    - [Mechanism](#mechanism)
+    - [ICI](#ici)
+    - [Blood microbiota](#blood-microbiota)
+  - [Database](#database)
+  - [Benchmark](#benchmark)
+  - [Pipeline](#pipeline)
+  - [Data Analysis Materials](#data-analysis-materials)
+  - [Lab](#lab)
+  - [Job view](#job-view)
+
+
 
 ## Review
 
@@ -56,9 +73,6 @@ Put daily work records on microbiota into this repository
 ### Blood microbiota
 
 * [﻿Microbiome analyses of blood and tissues suggest cancer diagnostic approach](https://www.nature.com/articles/s41586-020-2095-1)
-
-
-
 
 
 
