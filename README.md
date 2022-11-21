@@ -43,7 +43,7 @@ Put daily work records on microbiota into this repository
 
 * [Analysis of microbial compositions: a review of normalization and differential abundance analysis](https://www.nature.com/articles/s41522-020-00160-w)
 * [Microbiome differential abundance methods produce different results across 38 datasets](https://www.nature.com/articles/s41467-022-28034-z)
-
+* [Faecal microbiome-based machine learning for multi-class disease diagnosis](https://www.nature.com/articles/s41467-022-34405-3)
 
 
 ## Research article
@@ -87,6 +87,8 @@ Put daily work records on microbiota into this repository
 * [Global Microbial Gene Catalog (GMGC)](https://gmgc.embl.de/)
 * [The Comprehensive Antibiotic Resistance Database](https://card.mcmaster.ca/)
 * [microbioTA: an atlas of the microbiome in multiple disease tissues of Homo sapiens and Mus musculus](http://bio-annotation.cn/microbiota/)
+* [microbiome-metabolome data](https://github.com/borenstein-lab/microbiome-metabolome-curated-data)
+* [Metagenomic Data](https://github.com/waldronlab/curatedMetagenomicData)
 
 
 
@@ -99,7 +101,7 @@ Put daily work records on microbiota into this repository
 ## Pipeline
 
 * Humann2: [Species-level functional profiling of metagenomes and metatranscriptomes](https://www.nature.com/articles/s41592-018-0176-y)
-
+* binny: [binny: an automated binning algorithm to recover high-quality genomes from complex metagenomic datasets](https://academic.oup.com/bib/advance-article/doi/10.1093/bib/bbac431/6760137)
 
 
 ## Data Analysis Materials
@@ -118,7 +120,6 @@ Put daily work records on microbiota into this repository
 * [LightGBM R-package](https://lightgbm.readthedocs.io/en/latest/R/index.html)
 * [Mastering Software Development in R](https://bookdown.org/rdpeng/RProgDA/)
   
-
 
 
 ## Lab
