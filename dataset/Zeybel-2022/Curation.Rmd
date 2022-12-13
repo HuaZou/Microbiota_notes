@@ -140,13 +140,13 @@ long_protein_plasma <- readxl::read_xlsx("./OmicsDataSet-Zeybel et al. - 2022.xl
 + metadata
 ```{r}
 metadata <- meta_info %>%
-  dplyr::select(-`Patient ID...1`) %>%
-  dplyr::rename(`Patient ID` = `Patient ID...2`) %>%
+  dplyr::select(-`Patient ID`) %>%
+  # dplyr::rename(`Patient ID` = `Patient ID...2`) %>%
   dplyr::inner_join(meta_clin,
-                    by = "Patient ID") %>%
+                    by = "PatientID") %>%
   dplyr::select(-c("Stage", "Metabolomics", "Proteomics", 
-                   "Gut Metagenomics", "Oral Metagenomics")) %>%
-  dplyr::select(`Patient ID`, Gender, Age, everything())
+                   "GutMetagenomics", "OralMetagenomics")) %>%
+  dplyr::select(PatientID, Gender, Age, everything())
 
 head(metadata)
 ```
@@ -166,11 +166,13 @@ import_metaphlan_taxa <- function(data_metaphlan2,
 
   # remove the "NCBI_tax_id" column
   if (any(colnames(data_metaphlan2) %in% "NCBI_tax_id")) {
-    data_metaphlan2 <- data_metaphlan2 %>% dplyr::select(-NCBI_tax_id)
+    data_metaphlan2 <- data_metaphlan2 %>% 
+      dplyr::select(-NCBI_tax_id)
   }
 
   # remove sample names with "metaphlan_bugs_list" suffix
-  colnames(data_metaphlan2) <- gsub("_metaphlan_bugs_list$", "", colnames(data_metaphlan2))
+  colnames(data_metaphlan2) <- gsub("_metaphlan_bugs_list$", "", 
+                                    colnames(data_metaphlan2))
 
   if (is.null(taxa_level)) {
     taxa_level <- "Species"
@@ -223,10 +225,10 @@ get_metaphlan_phyloseq <- function(otu_tab,
                                    sam_tab,
                                    tax_tab = NULL) {
 
-  sid <- intersect(sam_tab$`Patient ID`, colnames(otu_tab))
+  sid <- intersect(sam_tab$PatientID, colnames(otu_tab))
   
-  sam_tab <- sam_tab[sam_tab$`Patient ID` %in% sid, ] %>%
-    tibble::column_to_rownames("Patient ID")
+  sam_tab <- sam_tab[sam_tab$PatientID %in% sid, ] %>%
+    tibble::column_to_rownames("PatientID")
   otu_tab <- otu_tab %>%
     dplyr::select(all_of(rownames(sam_tab)))
   
@@ -265,7 +267,7 @@ ps_ora
 
 + SummarizedExperiment: metabolites
 ```{r}
-metabolites_fecal$metabolitesID <- paste0("Chem_", metabolites_fecal$`CHEMICAL ID`)
+metabolites_fecal$metabolitesID <- paste0("Chem_", metabolites_fecal$CHEMICALID)
 
 # Row->metabolites; Col->Samples
 metabolites_fecal_assay <- metabolites_fecal %>%
@@ -277,7 +279,7 @@ metabolites_fecal_rowData <- metabolites_fecal %>%
   dplyr::select(metabolitesID, everything())
 
 metabolites_fecal_colData <- metadata  %>%
-  dplyr::filter(`Patient ID` %in% all_of(colnames(metabolites_fecal_assay)))
+  dplyr::filter(PatientID %in% all_of(colnames(metabolites_fecal_assay)))
 
 se_metabolite <- SummarizedExperiment(
                      assays = metabolites_fecal_assay,
@@ -304,7 +306,7 @@ protein_plasma_rowData <- protein_plasma_new %>%
   dplyr::select(ProteinID, everything())
 
 protein_plasma_colData <- metadata %>%
-  dplyr::filter(`Patient ID` %in% all_of(colnames(protein_plasma_assay)))
+  dplyr::filter(PatientID %in% all_of(colnames(protein_plasma_assay)))
 
 se_protein <- SummarizedExperiment(
                      assays = protein_plasma_assay,
@@ -337,24 +339,24 @@ saveRDS(se_protein, "./result/Zeybel_2022_plasma_protein_se.RDS", compress = TRU
 # after
 metadata_after <- long_meta_info %>%
   dplyr::inner_join(long_meta_clin,
-                    by = "Patient ID") %>%
-  dplyr::select(`Patient ID`, Gender, Age, everything())
+                    by = "PatientID") %>%
+  dplyr::select(PatientID, Gender, Age, everything())
 
 
 # before
 metadata_before <- metadata %>%
-  dplyr::filter(`Patient ID` %in% metadata_after$`Patient ID`) %>%
+  dplyr::filter(PatientID %in% metadata_after$PatientID) %>%
   dplyr::mutate(Stage = "Before")
 
 # cbind
 long_metadata <- rbind(metadata_before, metadata_after) %>%
-  dplyr::mutate(SampleID = paste(`Patient ID`, Stage, sep = "_")) %>%
-  dplyr::select(SampleID, `Patient ID`, Gender, Age, Stage, 
-                `Liver Fat Class`, 
-                `Weight (kg)`, `Body mass index (kg/m2)`, 
-                `Hip circumference (cm)`, 
-                `Waist circumference (cm)`, everything()) %>%
-  dplyr::arrange(`Patient ID`, desc(Stage))
+  dplyr::mutate(SampleID = paste(PatientID, Stage, sep = "_")) %>%
+  dplyr::select(SampleID, PatientID, Gender, Age, Stage, 
+                LiverFatClass, 
+                Weight, Body_mass_index, 
+                Hip_circumference, 
+                Waist_circumference, everything()) %>%
+  dplyr::arrange(PatientID, desc(Stage))
 
 head(long_metadata)
 ```
@@ -447,7 +449,7 @@ long_ps_ora
 
 + SummarizedExperiment: metabolites
 ```{r}
-metabolites_ID <- intersect(metabolites_fecal$BIOCHEMICAL, long_metabolites_fecal$`Metabolite ID`)
+metabolites_ID <- intersect(metabolites_fecal$BIOCHEMICAL, long_metabolites_fecal$MetaboliteID)
 long_metabolites_fecal_rowData <- metabolites_fecal_rowData %>%
   dplyr::filter(BIOCHEMICAL %in% metabolites_ID)
 
@@ -455,8 +457,8 @@ long_metabolites_fecal_rowData <- metabolites_fecal_rowData %>%
 long_metabolites_fecal_assay_after <- long_metabolites_fecal %>%
   dplyr::inner_join(long_metabolites_fecal_rowData %>% 
                       dplyr::select(metabolitesID, BIOCHEMICAL),
-                    by = c(`Metabolite ID` = "BIOCHEMICAL")) %>%
-  dplyr::select(-`Metabolite ID`) %>%
+                    by = c(MetaboliteID = "BIOCHEMICAL")) %>%
+  dplyr::select(-MetaboliteID) %>%
   dplyr::select(c("metabolitesID", c(starts_with("P10")))) %>%
   tibble::column_to_rownames("metabolitesID")
 
@@ -493,15 +495,15 @@ long_se_metabolite
 
 + SummarizedExperiment: proteomics
 ```{r}
-long_protein_plasma$`Protein ID` <- gsub("-", "_", long_protein_plasma$`Protein ID`)
-proteins_ID <- intersect(protein_plasma_new$ProteinID, long_protein_plasma$`Protein ID`)
+long_protein_plasma$ProteinID <- gsub("-", "_", long_protein_plasma$ProteinID)
+proteins_ID <- intersect(protein_plasma_new$ProteinID, long_protein_plasma$ProteinID)
 
 
 # Row->proteins; Col->Samples
 long_protein_plasma_assay_after <- long_protein_plasma %>%
-  dplyr::filter(`Protein ID` %in% proteins_ID) %>%
-  dplyr::select(c(`Protein ID`, c(starts_with("P10")))) %>%
-  tibble::column_to_rownames("Protein ID")
+  dplyr::filter(ProteinID %in% proteins_ID) %>%
+  dplyr::select(c(ProteinID, c(starts_with("P10")))) %>%
+  tibble::column_to_rownames("ProteinID")
 
 pron_id <- intersect(colnames(long_protein_plasma_assay_after),
                      colnames(protein_plasma_assay))
@@ -534,6 +536,8 @@ long_se_protein <- SummarizedExperiment(
 
 long_se_protein
 ```
+
+
 + output
 ```{r}
 if (!dir.exists("./result/")) {
