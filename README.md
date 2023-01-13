@@ -44,6 +44,7 @@ Put daily work records on microbiota into this repository
 * [Analysis of microbial compositions: a review of normalization and differential abundance analysis](https://www.nature.com/articles/s41522-020-00160-w)
 * [Microbiome differential abundance methods produce different results across 38 datasets](https://www.nature.com/articles/s41467-022-28034-z)
 * [Faecal microbiome-based machine learning for multi-class disease diagnosis](https://www.nature.com/articles/s41467-022-34405-3)
+* [Network-based machine learning approach topredict immunotherapy response in cancer patients](https://www.nature.com/articles/s41467-022-31535-6)
 
 
 ## Research article
