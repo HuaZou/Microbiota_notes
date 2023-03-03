@@ -36,6 +36,8 @@ Put daily work records on microbiota into this repository
 * [Next steps after 15 stimulating years of human gut microbiome research](https://sfamjournals.onlinelibrary.wiley.com/doi/full/10.1111/1751-7915.13970)
 * [Rethinking healthy eating in light of the gut microbiome](https://www.cell.com/cell-host-microbe/fulltext/S1931-3128(22)00222-0)
 * [Ecosystem-specific microbiota and microbiome databases in the era of big data](https://environmentalmicrobiome.biomedcentral.com/articles/10.1186/s40793-022-00433-1)
+* [Computational methods and challenges inanalyzing intratumoral microbiome data](https://www.cell.com/trends/microbiology/fulltext/S0966-842X(23)00030-6?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS0966842X23000306%3Fshowall%3Dtrue)
+* [The impact of the gut microbiome on extra-intestinal autoimmune diseases](https://www.nature.com/articles/s41577-022-00727-y)
 
 
 
