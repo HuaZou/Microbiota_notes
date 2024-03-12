@@ -122,6 +122,9 @@ Put daily work records on microbiota into this repository
 * [Visualisation of proteomics data using R and Bioconductor](https://lgatto.github.io/RforProteomics/articles/RProtVis.html)
 * [LightGBM R-package](https://lightgbm.readthedocs.io/en/latest/R/index.html)
 * [Mastering Software Development in R](https://bookdown.org/rdpeng/RProgDA/)
+* [MiDAS4 codes](https://github.com/msdueholm/MiDAS4/tree/main)
+* [FMT Meta Machine Learning](https://github.com/SegataLab/FMT_Meta_Machine_Learning)
+* [Singapore Platinum Metagenomes Project](https://github.com/CSB5/SPMP)
   
 
 
@@ -134,6 +137,7 @@ Put daily work records on microbiota into this repository
 * [Honda Lab](http://www.microbiolimmunol.med.keio.ac.jp/): We aim to identify specific intestinal bacterial species that influence the host immune cells by inducing their functions and differentiation.
 * [Borenstein lab](http://borensteinlab.com/): computational study of the human microbiome and of other complex microbial ecosystems.
 * [Gore Lab](http://www.gorelab.org/index.html): The Gore Lab studies how interactions between individuals determine the evolutionary and ecological dynamics of multi-species microbial communities. Of particular focus are alternative stables states, community assembly, cross-feeding, and the emergence of "cheater" strategies. The laboratory is composed of an interdisciplinary group of scientists interested in learning from each  other to effectively combine experiments, theory, and modeling.
+* [bhattlab](https://www.bhattlab.com/): human gut microbiota in STANFORD MEDICAL SCHOOL.
   
 
 
