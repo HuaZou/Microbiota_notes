@@ -47,6 +47,7 @@ Put daily work records on microbiota into this repository
 * [Microbiome differential abundance methods produce different results across 38 datasets](https://www.nature.com/articles/s41467-022-28034-z)
 * [Faecal microbiome-based machine learning for multi-class disease diagnosis](https://www.nature.com/articles/s41467-022-34405-3)
 * [Network-based machine learning approach topredict immunotherapy response in cancer patients](https://www.nature.com/articles/s41467-022-31535-6)
+* [Discovery of drug–omics associations in type 2 diabetes with generative deep-learning models](https://www.nature.com/articles/s41587-022-01520-x)
 
 
 ## Research article
@@ -92,6 +93,7 @@ Put daily work records on microbiota into this repository
 * [microbioTA: an atlas of the microbiome in multiple disease tissues of Homo sapiens and Mus musculus](http://bio-annotation.cn/microbiota/)
 * [microbiome-metabolome data](https://github.com/borenstein-lab/microbiome-metabolome-curated-data)
 * [Metagenomic Data](https://github.com/waldronlab/curatedMetagenomicData)
+* [GMrepo : a curated database of human gut metagenomes](https://gmrepo.humangut.info/home)
 
 
 
@@ -125,6 +127,7 @@ Put daily work records on microbiota into this repository
 * [MiDAS4 codes](https://github.com/msdueholm/MiDAS4/tree/main)
 * [FMT Meta Machine Learning](https://github.com/SegataLab/FMT_Meta_Machine_Learning)
 * [Singapore Platinum Metagenomes Project](https://github.com/CSB5/SPMP)
+* [Multi-Omics Variational autoEncoder](https://github.com/RasmussenLab/MOVE/)
   
 
 
